@@ -29,3 +29,6 @@ console.log('From Global')
 // Execution of context B
 // Execution of context A
 // Execution of Global context
+
+// 1. Creational Phase
+// 2. Executional Phase

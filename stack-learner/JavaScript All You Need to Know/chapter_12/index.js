@@ -52,27 +52,47 @@
 // another.print()
 
 //! 109. Factory Pattern in Javascript
+// Factory Pattern is like object with properties
 
-var createRect = function (width, height) {
-    return {
-        width: width,
-        height: height,
+// var createRect = function (width, height) {
+//     return {
+//         width: width,
+//         height: height,
 
-        draw: function () {
-            console.log('I am rectangle');
-            this.printProperties()
-            console.log(this)
-        },
+//         draw: function () {
+//             console.log('I am rectangle');
+//             this.printProperties()
+//             console.log(this)
+//         },
 
-        printProperties: function () {
-            console.log('My width is ' + this.width);
-            console.log('My height is ' + this.height);
-        }
+//         printProperties: function () {
+//             console.log('My width is ' + this.width);
+//             console.log('My height is ' + this.height);
+//         }
+//     }
+// }
+
+// var rect1 = createRect(10, 8)
+// rect1.draw()
+
+//! 110. Constructor Pattern in Javascript
+// Constructor Pattern is like function declaration
+
+var Rectangle = function (width, height) {
+    this.width = width
+    this.height = height
+
+    this.draw = function () {
+        console.log('I am rectangle');
+        this.printProperties()
+        console.log(this)
+    }
+
+    this.printProperties = function () {
+        console.log('My width is ' + this.width);
+        console.log('My height is ' + this.height);
     }
 }
 
-var rect1 = createRect(10, 8)
+var rect1 = new Rectangle(15, 58)
 rect1.draw()
-
-var rect2 = createRect(40, 30)
-rect2.draw()

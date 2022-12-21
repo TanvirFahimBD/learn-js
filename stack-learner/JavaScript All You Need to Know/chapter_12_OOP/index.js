@@ -129,3 +129,36 @@
 //! 112. Factory vs Constructor in Javascript
 //Constructor pattern more preferable than factory pattern
 
+//! 113. Constructor Property in Javascript
+
+// var str = new String('str')
+// console.log(str.constructor);
+// console.log(str);
+// console.log('My String is ' + str);
+
+//! 114. Functions Are Object in Javascript
+// function test() {
+//     console.log('something')
+// }
+
+// console.log(test.name, test.length)
+
+// var Rect = new Function('width', 'height',
+//     `this.width = width
+//     this.height = height
+
+//     this.draw = function () {
+//         console.log('I am rectangle');
+//         this.printProperties()
+//         console.log(this)
+//     }
+
+//     this.printProperties = function () {
+//         console.log('My width is ' + this.width);
+//         console.log('My height is ' + this.height);
+//     }`
+// )
+
+// var rect5 = new Rect(4, 5)
+// console.log(rect5);
+// rect5.draw();    

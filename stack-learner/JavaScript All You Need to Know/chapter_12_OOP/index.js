@@ -78,21 +78,54 @@
 //! 110. Constructor Pattern in Javascript
 // Constructor Pattern is like function declaration
 
-var Rectangle = function (width, height) {
-    this.width = width
-    this.height = height
+// var Rectangle = function (width, height) {
+//     this.width = width
+//     this.height = height
 
-    this.draw = function () {
-        console.log('I am rectangle');
-        this.printProperties()
-        console.log(this)
-    }
+//     this.draw = function () {
+//         console.log('I am rectangle');
+//         this.printProperties()
+//         console.log(this)
+//     }
 
-    this.printProperties = function () {
-        console.log('My width is ' + this.width);
-        console.log('My height is ' + this.height);
-    }
-}
+//     this.printProperties = function () {
+//         console.log('My width is ' + this.width);
+//         console.log('My height is ' + this.height);
+//     }
+// }
 
-var rect1 = new Rectangle(15, 58)
-rect1.draw()
+// var rect1 = new Rectangle(15, 58)
+// rect1.draw()
+
+//! 111. New Keyword in Javascript
+
+// var Rectangle = function (width, height) {
+//     this.width = width
+//     this.height = height
+
+//     this.draw = function () {
+//         console.log('I am rectangle');
+//         this.printProperties()
+//         console.log(this)
+//     }
+
+//     this.printProperties = function () {
+//         console.log('My width is ' + this.width);
+//         console.log('My height is ' + this.height);
+//     }
+// }
+
+// function myNew(constructor) {
+//     var obj = {}
+//     Object.setPrototypeOf(obj, constructor.prototype)
+//     var argsArray = Array.prototype.slice.apply(arguments)
+//     constructor.apply(obj, argsArray.slice(1))
+//     return obj;
+// }
+
+// var rect4 = myNew(Rectangle, 45, 30)
+// rect4.draw()
+
+//! 112. Factory vs Constructor in Javascript
+//Constructor pattern more preferable than factory pattern
+

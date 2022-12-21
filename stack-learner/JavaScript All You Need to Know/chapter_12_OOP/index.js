@@ -182,28 +182,52 @@
 
 //! 116. Pass By Value vs Pass By Reference in Javascript
 
-//* Pass By Value/call by value -> not change globally if primitive data types changes
-var a = 10
+//* Pass By Value/call by value -> primitive data types not changes globally if primitive data types changes applied. Here we can see variables are immutable objects
+// var a = 10
 
-function byValue(a) {
-    a = 100 + a
-    console.log(a)
+// function byValue(a) {
+//     a = 100 + a
+//     console.log(a)
+// }
+
+// byValue(a)
+// console.log(a);
+
+//* Pass By reference/call by reference -> reference data types changes globally if reference data types changes applied. Here we can see objects are mutable objects
+// var obj = {
+//     a: 10,
+//     b: 30
+// }
+
+// function byRef(obj) {
+//     obj.a = 100 + obj.a
+//     obj.b = 100 + obj.b
+//     console.log(obj)
+// }
+
+// byRef(obj)
+// console.log(obj);
+
+//! 118. Private Properties in Javascript
+var Rectangle = function (width, height) {
+    this.width = width
+    this.height = height
+    var position = {
+        x: 56,
+        y: -100
+    }
+
+    var printProperties = function () {
+        console.log('My width is ' + this.width);
+        console.log('My height is ' + this.height);
+    }.bind(this)
+
+    this.draw = function () {
+        console.log('I am rectangle');
+        printProperties()
+        console.log("Position: X = " + position.x, "Position: Y = " + position.y)
+    }
 }
 
-byValue(a)
-console.log(a);
-
-//* Pass By reference/call by reference -> changes globally if reference data types changes
-var obj = {
-    a: 10,
-    b: 30
-}
-
-function byRef(obj) {
-    obj.a = 100 + obj.a
-    obj.b = 100 + obj.b
-    console.log(obj)
-}
-
-byRef(obj)
-console.log(obj);
+var rect7 = new Rectangle(45, 30)
+rect7.draw()

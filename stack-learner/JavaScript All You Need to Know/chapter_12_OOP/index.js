@@ -161,4 +161,49 @@
 
 // var rect5 = new Rect(4, 5)
 // console.log(rect5);
-// rect5.draw();    
+// rect5.draw();
+
+//! 115. Bind, Call, Apply in Javascript
+// function myFunc(c, d) {
+//     console.log(this);
+//     console.log(this.a + this.b + c + d);
+// }
+// myFunc()
+
+//* call -> (object, parameters)
+// myFunc.call({ a: 1, b: 2 }, 3, 4);
+
+//* apply -> (object, parameters into array)
+// myFunc.apply({ a: 10, b: 20 }, [30, 40]);
+
+//* bind -> return function (object) & then call the function
+// var bindFunc = myFunc.bind({ a: 100, b: 200 });
+// bindFunc(300, 400)
+
+//! 116. Pass By Value vs Pass By Reference in Javascript
+
+//* Pass By Value/call by value -> not change globally if primitive data types changes
+var a = 10
+
+function byValue(a) {
+    a = 100 + a
+    console.log(a)
+}
+
+byValue(a)
+console.log(a);
+
+//* Pass By reference/call by reference -> changes globally if reference data types changes
+var obj = {
+    a: 10,
+    b: 30
+}
+
+function byRef(obj) {
+    obj.a = 100 + obj.a
+    obj.b = 100 + obj.b
+    console.log(obj)
+}
+
+byRef(obj)
+console.log(obj);

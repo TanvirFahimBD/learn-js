@@ -209,6 +209,30 @@
 // console.log(obj);
 
 //! 118. Private Properties in Javascript
+// var Rectangle = function (width, height) {
+//     this.width = width
+//     this.height = height
+//     var position = {
+//         x: 56,
+//         y: -100
+//     }
+
+//     var printProperties = function () {
+//         console.log('My width is ' + this.width);
+//         console.log('My height is ' + this.height);
+//     }.bind(this)
+
+//     this.draw = function () {
+//         console.log('I am rectangle');
+//         printProperties()
+//         console.log("Position: X = " + position.x, "Position: Y = " + position.y)
+//     }
+// }
+
+// var rect7 = new Rectangle(45, 30)
+// rect7.draw()
+
+//! 119. How to Use Getter Setter in Javascript
 var Rectangle = function (width, height) {
     this.width = width
     this.height = height
@@ -216,6 +240,19 @@ var Rectangle = function (width, height) {
         x: 56,
         y: -100
     }
+
+    this.getPosition = function () {
+        return position
+    }
+
+    Object.defineProperty(this, 'position', {
+        get: function () {
+            return position
+        },
+        set: function (value) {
+            position = value
+        }
+    })
 
     var printProperties = function () {
         console.log('My width is ' + this.width);
@@ -230,4 +267,9 @@ var Rectangle = function (width, height) {
 }
 
 var rect7 = new Rectangle(45, 30)
-rect7.draw()
+// rect7.getPosition()
+rect7.position = {
+    x: 10,
+    y: 674
+}
+console.log(rect7.position);

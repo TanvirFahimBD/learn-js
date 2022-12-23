@@ -69,6 +69,70 @@
 //     }
 // }
 
-// var sqr1 = Square(10)
-// var sqr2 = Square(5)
+// var sqr1 = new Square(10)
+// var sqr2 = new Square(5)
 
+//! 126. Using Instance and Prototype Members in Javascript
+// function Square(width) {
+//     this.width = width
+//     this.getWidth = function () {
+//         console.log('Width: ' + this.width);
+//         // this.draw()
+//     }
+// }
+
+// Square.prototype = {
+//     draw: function () {
+//         this.getWidth()
+//         console.log('Draw');
+//     },
+//     toString: function () {
+//         return 'My width is: ' + this.width
+//     }
+// }
+
+// var sqr1 = new Square(10)
+// var sqr2 = new Square(5)
+
+// console.log(Object.keys(sqr1));
+
+// for (var i in sqr1) {
+//     console.log(i)
+// }
+
+//! 129. First Prototypical Inheritance in Javascript
+function Shape() {
+
+}
+
+Shape.prototype = {
+    common: function () {
+        console.log('I am common method');
+    }
+}
+
+function Square(width) {
+    this.width = width
+}
+
+Square.prototype = Object.create(Shape.prototype)
+
+Square.prototype.draw = function () {
+    this.getWidth()
+    console.log('Drawing');
+}
+
+
+function Circle() {
+
+}
+
+Circle.prototype = Object.create(Shape.prototype)
+
+var shape = new Shape()
+var sqr = new Square(45)
+var circle = new Circle()
+
+//* shape -> Shape -> Object
+//* sqr -> Square -> Object
+//* sqr -> Square -> Shape -> Object

@@ -101,38 +101,39 @@
 // }
 
 //! 129. First Prototypical Inheritance in Javascript
-function Shape() {
+// function Shape() {
 
-}
+// }
 
-Shape.prototype = {
-    common: function () {
-        console.log('I am common method');
-    }
-}
+// Shape.prototype = {
+//     common: function () {
+//         console.log('I am common method');
+//     }
+// }
 
-function Square(width) {
-    this.width = width
-}
+// function Square(width) {
+//     this.width = width
+// }
 
-Square.prototype = Object.create(Shape.prototype)
+// Square.prototype = Object.create(Shape.prototype)
 
-Square.prototype.draw = function () {
-    this.getWidth()
-    console.log('Drawing');
-}
+// Square.prototype.draw = function () {
+//     this.getWidth()
+//     console.log('Drawing');
+// }
 
+// function Circle() {
 
-function Circle() {
+// }
 
-}
+// Circle.prototype = Object.create(Shape.prototype)
 
-Circle.prototype = Object.create(Shape.prototype)
-
-var shape = new Shape()
-var sqr = new Square(45)
-var circle = new Circle()
+// var shape = new Shape()
+// var sqr = new Square(45)
+// var circle = new Circle()
 
 //* shape -> Shape -> Object
 //* sqr -> Square -> Object
 //* sqr -> Square -> Shape -> Object
+
+//! 130. Reset Constructor After Inheritance in Javascript

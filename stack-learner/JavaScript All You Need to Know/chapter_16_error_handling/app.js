@@ -67,10 +67,21 @@
 // }
 
 //! 175. Custom Error in Javascript 
+class CustomError extends Error {
+    constructor(msg) {
+        super(msg);
+        if (Error.captureStackTrace) {
+            Error.captureStackTrace(this, CustomError)
+        }
+    }
+}
+
 try {
     console.log('I line 1');
-    throw new Error('I am your error')
-} catch {
+    throw new CustomError('I am your error')
+} catch (e) {
+    console.dir(e);
+    // console.log(e.message);
     console.log('This is a custom error message');
 } finally {
     console.log('I am finally block');

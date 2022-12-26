@@ -233,3 +233,22 @@ import '../styles/index.scss'
 // console.log(iterate.next());
 // console.log(iterate.next());
 // console.log(iterate.next());
+
+//! 153. For of Loop in Javascript
+//* complexity less because of only value not index
+// for (let v of arr) {
+//     console.log(v)
+// }
+
+// for (let v of 'Tanvir') {
+//     console.log(v)
+// }
+//* for of not working for object
+// let obj = {
+//     a: 10,
+//     b: 20
+// }
+
+// for (let v of obj) {
+//     console.log(v)
+// }

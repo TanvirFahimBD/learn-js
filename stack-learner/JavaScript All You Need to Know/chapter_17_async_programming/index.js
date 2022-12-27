@@ -146,7 +146,7 @@
 //? web api is asynchronous
 // function asyncMap(arr, cb) {
 //     return arr.map(v => {
-        // setTimeout(cb.bind(null, v), 0);
+// setTimeout(cb.bind(null, v), 0);
 //         setTimeout(() => cb(v), 0);
 //     })
 // }
@@ -154,3 +154,147 @@
 // let cbArr = asyncMap(arr, v => {
 //     console.log(v)
 // })
+
+//! 186. Why Not Callback in Javascript
+// function getRequest(url, callback) {
+//         const xhr = new XMLHttpRequest()
+//         xhr.open('get', url)
+
+//         xhr.onreadystatechange = function (e) {
+//                 if (xhr.readyState === 4) {
+//                         if (xhr.status === 200) {
+//                                 let response = JSON.parse(xhr.response)
+//                                 callback(null, response)
+//                         } else {
+//                                 callback(xhr.status, null)
+//                         }
+//                 }
+//         }
+
+//         xhr.send()
+// }
+
+// const BASE_URL = 'https://jsonplaceholder.typicode.com'
+// getRequest(`${BASE_URL}/post/1`, (err, res) => {
+//         if (err) throw new Error('Error occurred')
+//         let { userId } = res;
+
+//         getRequest(`${BASE_URL}/users/${userId}`, (err, res) => {
+//                 if (err) throw new Error('Error occurred')
+
+//                 getRequest(`${BASE_URL}/posts/1/comments/${res.id}`, (err, res) => {
+//                         if (err) throw new Error('Error occurred')
+//                         console.log(res);
+//                 })
+//         })
+// })
+
+//! 187. Introduction to Promise in Javascript
+//* resolve, reject both are function
+// let p1 = new Promise((resolve, reject) => {
+//         setTimeout(resolve, 5000, 'one')
+// })
+
+// let p2 = new Promise((resolve, reject) => {
+//         setTimeout(resolve, 3000, 'two')
+// })
+
+// console.log(p1)
+// console.log(p2)
+
+// p1.then((v) => {
+//         console.log(v);
+// })
+
+// p2.then((v) => {
+//         console.log(v);
+// })
+
+// function getIphone(isPassed) {
+//         return promise = new Promise((resolve, reject) => {
+//                 setTimeout(() => {
+//                         if (isPassed) {
+//                                 resolve('I have got an iphone')
+//                         } else {
+//                                 reject(new Error('I have failed'))
+//                         }
+//                 }, 2000);
+//         });
+// }
+
+// console.log(getIphone(true))
+// console.log(getIphone(false))
+
+//* most used past in promise
+// getIphone(true)
+//         .then((res) => {
+//                 console.log(res);
+//         }).catch((e) => {
+//                 console.log(e.message)
+//         })
+
+//! 188. Implement Fetch API in Javascript
+//* promise benefit is chaining & promise with next chain relation parent child
+
+// const BASE_URL = 'https://jsonplaceholder.typicode.com'
+
+// fetch(`${BASE_URL}/users/1`)
+//         .then(res => res.json())
+//         .then(data => {
+//                 console.log(data)
+//                 return Promise.resolve('something')
+//         })
+//         .then(str => {
+//                 console.log(str)
+//                 return Promise.resolve(' Another promise')
+//         })
+//         .then(another => {
+//                 console.log(another)
+//         })
+//         .catch(err => console.error(err))
+
+
+//? relation view
+// getRequest(function () {
+//         getRequest(function () {
+//                 getRequest(function () {
+//                         getRequest(function () {
+
+//                         })
+//                 })
+//         })
+// })
+
+// const BASE_URL = 'https://jsonplaceholder.typicode.com'
+
+// function getRequest(url) {
+//         return new Promise((resolve, reject) => {
+//                 const xhr = new XMLHttpRequest()
+//                 xhr.open('get', url)
+//                 xhr.onreadystatechange = function (e) {
+//                         if (xhr.readyState === 4) {
+//                                 if (xhr.status === 200) {
+//                                         let response = JSON.parse(xhr.response)
+//                                         resolve(response)
+//                                 } else {
+//                                         reject(new Error('Error Occurred'))
+//                                 }
+//                         }
+//                 }
+//                 xhr.send()
+//         })
+// }
+
+// getRequest(`${BASE_URL}/users/1`)
+//         .then(data => {
+//                 console.log(data);
+//         })
+//         .then(e => {
+//                 console.log(e.message);
+//         })
+
+//! 189. Promise API in Javascript
+const delay = s => new Promise((resolve) => setTimeout(resolve, s * 1000))
+
+delay(2).then(() => console.log('2 seconds delay'))
+//2:23 / 11:56
